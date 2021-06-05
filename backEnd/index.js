@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const connection = require('./database/database.js')
+
+//autorizando acesso a todos
+app.use(cors());
 
 //importando rotas
 const categoriesController = require('./categories/CategoriesController')
