@@ -48,19 +48,19 @@ router.delete('/admin/categories/delete', (req, res) => {
   }
 })
 
-router.get('/admin/categories/edit/:id', (req, res)=>{
+router.get('/admin/categories/edit/:id', (req, res) => {
   const id = req.params.id
-  if(isNaN(id)){
+  if (isNaN(id)) {
     res.redirect('/admin/categories')
   }
 
-  Category.findByPk(id).then(category =>{
-    if(category != undefined){
+  Category.findByPk(id).then(category => {
+    if (category != undefined) {
       res.send("achou")
-    }else{
+    } else {
       res.redirect('/admin/categories')
     }
-  }).catch(erro=>{
+  }).catch(erro => {
     res.redirect('/admin/categories')
   })
 })
@@ -69,17 +69,16 @@ router.get('/admin/categories/edit/:id', (req, res)=>{
 router.put('/admin/categories/update', (req, res) => {
   const id = req.body.id
   const title = req.body.title
-  console.log(req.body)
 
   Category.update({ title: title, slug: slugify(title) }, {
     where: {
       id: id
     }
   }).then(() => {
-  res.send('Atualizado com sucesso')
-}).catch(erro => {
-  res.send(erro)
-})
+    res.send('Atualizado com sucesso')
+  }).catch(erro => {
+    res.send(erro)
+  })
 })
 
 

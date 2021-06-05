@@ -21,7 +21,7 @@ const Article = connection.define('articles', {
 Category.hasMany(Article) // Relacionamento de categoria possui varios artigos
 
 
-//Usar somente uma vez, para criar a tabela no banco de dados
-//Article.sync({force: true})
+//criando tabela caso nao exista
+Article.sync({force: false})
 
 module.exports = Article

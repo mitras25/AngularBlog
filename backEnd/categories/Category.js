@@ -13,7 +13,7 @@ const Category = connection.define('categories', {
   }
 })
 
-//Usar somente uma vez, para criar a tabela no banco de dados
-//Category.sync({force: true})
+//criando tabela caso não exista
+Category.sync({force: false})
 
 module.exports = Category

@@ -7,7 +7,10 @@ const Category = require('../categories/Category')
 // listando todos os artigos
 router.get('/admin/articles', async (req, res, next) => {
   try {
-    const existe = await Article.findAll();
+    const existe = await Article.findAll({
+      //ordenando pelo mais recente
+      order:[['id', 'DESC']]
+    });
     res.status(200);
     res.json(existe);
   } catch (erro) {
@@ -64,5 +67,45 @@ router.delete('/admin/articles/delete', (req, res) => {
   }
 })
 
+//editar artigo
+router.get('/admin/articles/edit/:id', (req, res)=>{
+  const id = req.params.id
+  Article.findByPk(id)
+  .then(article => {
+    if(article != undefined){
+      Category.findAll()
+      .then(categories=>{
+        res.send(categories)
+      })
+    }else{
+      res.send('Item invalido')
+    }
+  }).catch((erro)=>{
+    res.send(erro)
+  })
+})
+
+
+router.put('/admin/articles/update', (req, res) => {
+  const id = req.body.id
+  const title = req.body.title
+  const body = req.body.body
+  const category = req.body.categoryId
+  console.log(req.body)
+
+
+  Article.update({
+     title: title, 
+     slug: slugify(title),
+     body: body,
+     categoryId: category
+    }, {
+    where: { id: id}
+  }).then(() => {
+  res.send('Atualizado com sucesso')
+}).catch(erro => {
+  res.send(erro)
+})
+})
 
 module.exports = router
