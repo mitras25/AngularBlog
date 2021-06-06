@@ -1,0 +1,17 @@
+.sidenave{
+  background-color: #3f5185;
+  width: 13rem;
+}
+
+.sidenave a{
+  color:#fff;
+}
+
+.sidenave i {
+  padding-right: 1rem;
+}
+
+.content {
+  padding: 1rem;
+  background-color: #fff;
+}
