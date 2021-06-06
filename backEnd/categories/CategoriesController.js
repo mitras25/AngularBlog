@@ -4,7 +4,7 @@ const Category = require('./Category')
 const slugify = require('slugify')
 
 
-router.get('/admin/categories', async (req, res, next) => {
+router.get('/categories', async (req, res, next) => {
   try {
     const existe = await Category.findAll();
     res.status(200);
@@ -15,7 +15,7 @@ router.get('/admin/categories', async (req, res, next) => {
 }
 )
 
-router.post('/admin/categories/save', (req, res) => {
+router.post('/categories/create', (req, res) => {
   const title = req.body.title
   if (title != undefined) {
     Category.create({
@@ -23,10 +23,10 @@ router.post('/admin/categories/save', (req, res) => {
       //versão do titulo pra url
       slug: slugify(title)
     }).then(() => {
-      res.redirect('/')
+      res.json('Cadastrado com Sucesso back')
     })
   } else {
-    res.redirect('/categories')
+    res.json('Categoria Inválida')
   }
 })
 
