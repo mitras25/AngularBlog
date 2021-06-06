@@ -1,17 +1,27 @@
 <mat-sidenav-container class="container">
-  <mat-sidenav class="sidenave" mode="side" opened fixedInViewport="true" fixedTopGap="64">
+  <mat-sidenav
+    class="sidenave"
+    mode="side"
+    opened
+    fixedInViewport="true"
+    fixedTopGap="64"
+  >
     <mat-nav-list class="nav-list">
       <a mat-list-item routerLink="/">
-        <i class="material-icons">
-          home
-        </i>
+        <i class="material-icons"> home </i>
         Início
       </a>
-      <a mat-list-item routerLink="/usuarios">
-        <i class="material-icons">
-          app_registration
-        </i>
-        Cadastro de usuário
+      <a mat-list-item routerLink="/usuarios/create">
+        <i class="material-icons"> app_registration </i>
+        Novo Usuário
+      </a>
+      <a mat-list-item routerLink="/category/create">
+        <i class="material-icons"> category </i>
+        Nova Categoria
+      </a>
+      <a mat-list-item routerLink="/article/create">
+        <i class="material-icons"> article </i>
+        Novo Artigo
       </a>
     </mat-nav-list>
   </mat-sidenav>

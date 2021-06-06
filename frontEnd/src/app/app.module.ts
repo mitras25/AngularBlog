@@ -20,10 +20,32 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { CategoryCreateComponent } from './components/category/category-create/category-create.component';
+import { CategoryReadComponent } from './components/category/category-read/category-read.component';
+import { CategoryDeleteComponent } from './components/category/category-delete/category-delete.component';
+import { ArticleCreateComponent } from './components/article/article-create/article-create.component';
+import { ArticleReadComponent } from './components/article/article-read/article-read.component';
+import { ArticleDeleteComponent } from './components/article/article-delete/article-delete.component';
+import { ArticleUpdateComponent } from './components/article/article-update/article-update.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, UsuarioCrudComponent, UsuarioCreateComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    HomeComponent,
+    UsuarioCrudComponent,
+    UsuarioCreateComponent,
+    CategoryCreateComponent,
+    CategoryReadComponent,
+    CategoryDeleteComponent,
+    ArticleCreateComponent,
+    ArticleReadComponent,
+    ArticleDeleteComponent,
+    ArticleUpdateComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,7 +60,6 @@ import {HttpClientModule} from '@angular/common/http'
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent],
