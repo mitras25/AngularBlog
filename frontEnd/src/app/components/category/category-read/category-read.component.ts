@@ -9,6 +9,7 @@ import { Category } from '../category.model';
 })
 export class CategoryReadComponent implements OnInit {
   categories: Category[] = [];
+  displayedColumns = ['id', 'title']
 
   constructor(private categoryService: CategoryService) {}
 

@@ -30,6 +30,10 @@ import { ArticleDeleteComponent } from './components/article/article-delete/arti
 import { ArticleUpdateComponent } from './components/article/article-update/article-update.component';
 import { CategoryCrudComponent } from './views/category-crud/category-crud/category-crud.component';
 import { ArticleCrudComponent } from './views/article-crud/article-crud/article-crud.component';
+import { CategoryRead2Component } from './components/category/category-read2/category-read2.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,7 @@ import { ArticleCrudComponent } from './views/article-crud/article-crud/article-
     ArticleUpdateComponent,
     CategoryCrudComponent,
     ArticleCrudComponent,
+    CategoryRead2Component,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +69,9 @@ import { ArticleCrudComponent } from './views/article-crud/article-crud/article-
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
