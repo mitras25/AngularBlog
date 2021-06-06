@@ -30,7 +30,8 @@ router.post('/users/create', (req, res) => {
       User.create({
         userName: userName,
         email: email,
-        password: hash
+        password: hash,
+        isAdmin: true
       }).then(() => {
         res.send('Cadastrado')
       }).catch((erro) => {

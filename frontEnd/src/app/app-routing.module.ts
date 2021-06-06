@@ -1,3 +1,4 @@
+import { UsuarioCreateComponent } from './components/usuarios/usuario-create/usuario-create.component';
 import { UsuarioCrudComponent } from './views/usuario-crud/usuario-crud.component';
 import { HomeComponent } from './views/home/home.component';
 
@@ -13,6 +14,10 @@ const routes: Routes = [
     path: 'usuarios',
     component: UsuarioCrudComponent,
   },
+  {
+    path: 'usuarios/create',
+    component: UsuarioCreateComponent
+  }
 ];
 
 @NgModule({

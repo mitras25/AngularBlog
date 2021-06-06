@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const connection = require('../database/database')
 const Category = require("../categories/Category")
+const User = require("../users/User")
 
 const Article = connection.define('articles', {
   title: {
@@ -19,9 +20,10 @@ const Article = connection.define('articles', {
 })
 
 Category.hasMany(Article) // Relacionamento de categoria possui varios artigos
+User.hasMany(Article)// Relacionamento de usuarios possui varios artigos
 
 
 //criando tabela caso nao exista
-Article.sync({force: false})
+//Article.sync({force: false})
 
 module.exports = Article

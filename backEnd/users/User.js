@@ -14,7 +14,11 @@ const User = connection.define('user', {
   userName: {
     type: Sequelize.STRING,
     allowNull: false
-  }
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
+  },
 })
 
 //criando tabela caso não exista
