@@ -21,6 +21,6 @@ export class UsuarioService {
   }
 
   create(usuario: User): Observable<User>{
-    return this.http.post<User>(this.baseUrl, usuario)
+    return this.http.post<User>(`${this.baseUrl}/create`, usuario)
   }
 }
