@@ -11,6 +11,7 @@ import { HomeComponent } from './views/home/home.component';
 
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoryCrudComponent } from './views/category-crud/category-crud/category-crud.component';
 
 const routes: Routes = [
   {
@@ -23,35 +24,39 @@ const routes: Routes = [
   },
   {
     path: 'usuarios/create',
-    component: UsuarioCreateComponent
+    component: UsuarioCreateComponent,
   },
   {
-path: 'category/create',
-component: CategoryCreateComponent
+    path: 'category',
+    component: CategoryCrudComponent,
   },
   {
-path: 'category/read',
-component: CategoryReadComponent
+    path: 'category/create',
+    component: CategoryCreateComponent,
   },
   {
-path: 'category/delete',
-component: CategoryDeleteComponent
+    path: 'category/read',
+    component: CategoryReadComponent,
   },
   {
-path: 'article/create',
-component: ArticleCreateComponent
+    path: 'category/delete',
+    component: CategoryDeleteComponent,
   },
   {
-path: 'article/read',
-component: ArticleReadComponent
+    path: 'article/create',
+    component: ArticleCreateComponent,
   },
   {
-path: 'article/delete',
-component: ArticleDeleteComponent
+    path: 'article/read',
+    component: ArticleReadComponent,
   },
   {
-path: 'article/update',
-component: ArticleUpdateComponent
+    path: 'article/delete',
+    component: ArticleDeleteComponent,
+  },
+  {
+    path: 'article/update',
+    component: ArticleUpdateComponent,
   },
 ];
 

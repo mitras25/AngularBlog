@@ -21,12 +21,12 @@ category: Category = {
   createCategory(): void {
     this.categoryService.create(this.category).subscribe(() => {
       this.categoryService.showMessage('Cadastrado com sucesso front');
-      this.router.navigate(['/']);
+      this.router.navigate(['/category']);
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/category']);
   }
 
 }

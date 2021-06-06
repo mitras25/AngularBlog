@@ -21,8 +21,14 @@ export class CategoryService {
     });
   }
 
+  //criando
   create(category: Category): Observable<Category>{
     return this.http.post<Category>(`${this.baseUrl}/create`, category)
+  }
+
+  //lendo
+  read(): Observable<Category[]>{
+    return this.http.get<Category[]>(this.baseUrl)
   }
 
   

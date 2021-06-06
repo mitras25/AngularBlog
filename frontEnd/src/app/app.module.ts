@@ -28,6 +28,8 @@ import { ArticleCreateComponent } from './components/article/article-create/arti
 import { ArticleReadComponent } from './components/article/article-read/article-read.component';
 import { ArticleDeleteComponent } from './components/article/article-delete/article-delete.component';
 import { ArticleUpdateComponent } from './components/article/article-update/article-update.component';
+import { CategoryCrudComponent } from './views/category-crud/category-crud/category-crud.component';
+import { ArticleCrudComponent } from './views/article-crud/article-crud/article-crud.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { ArticleUpdateComponent } from './components/article/article-update/arti
     ArticleReadComponent,
     ArticleDeleteComponent,
     ArticleUpdateComponent,
+    CategoryCrudComponent,
+    ArticleCrudComponent,
   ],
   imports: [
     BrowserModule,
