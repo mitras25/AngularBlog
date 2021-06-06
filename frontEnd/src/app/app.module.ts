@@ -16,6 +16,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent, HomeComponent, UsuarioCrudComponent, UsuarioCreateComponent],
@@ -28,6 +31,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatListModule,
     MatCardModule,
     MatButtonModule,
+    MatSnackBarModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
