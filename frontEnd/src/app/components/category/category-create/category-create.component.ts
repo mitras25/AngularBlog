@@ -6,17 +6,19 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-category-create',
   templateUrl: './category-create.component.html',
-  styleUrls: ['./category-create.component.css']
+  styleUrls: ['./category-create.component.css'],
 })
 export class CategoryCreateComponent implements OnInit {
-category: Category = {
-  title: ""
-}
+  category: Category = {
+    title: '',
+  };
 
-  constructor(private categoryService: CategoryService, private router: Router) { }
+  constructor(
+    private categoryService: CategoryService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   createCategory(): void {
     this.categoryService.create(this.category).subscribe(() => {
@@ -28,5 +30,4 @@ category: Category = {
   cancel(): void {
     this.router.navigate(['/category']);
   }
-
 }

@@ -16,7 +16,6 @@ export class CategoryReadComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.read().subscribe((categories) => {
       this.categories = categories;
-      console.log(categories);
     });
   }
 }

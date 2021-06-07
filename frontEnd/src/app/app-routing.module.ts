@@ -1,3 +1,4 @@
+import { ArticleCrudComponent } from './views/article-crud/article-crud/article-crud.component';
 import { ArticleUpdateComponent } from './components/article/article-update/article-update.component';
 import { ArticleDeleteComponent } from './components/article/article-delete/article-delete.component';
 import { ArticleReadComponent } from './components/article/article-read/article-read.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'category/delete',
     component: CategoryDeleteComponent,
+  },
+  {
+    path: 'article',
+    component: ArticleCrudComponent,
   },
   {
     path: 'article/create',

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-crud',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleCrudComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  navigateToArticleCreate(): void {
+    this.router.navigate(['/article/create']);
   }
 
 }

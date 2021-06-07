@@ -1,1 +1,27 @@
-<p>article-create works!</p>
+
+<mat-card>
+  <mat-card-title>Novo Artigo</mat-card-title>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="titulo do Artigo" [(ngModel)]="article.title" name="article"/>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Categoria</mat-label>
+      <mat-select [(ngModel)]="article.idCategory" name="category">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{category.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Digite seu texto" cols="30" rows="12" [(ngModel)]="article.body" name="body"></textarea>
+    </mat-form-field>
+
+  </form>
+  <button mat-raised-button (click)="createArticle()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="accent">Cancelar</button>
+</mat-card> 
