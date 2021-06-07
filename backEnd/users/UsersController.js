@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('./User')
 const bcrypt = require('bcrypt')
+const Usuarios = require('./UserService')
 
 router.get('/users', async (req, res, next) => {
   try {
@@ -13,34 +14,36 @@ router.get('/users', async (req, res, next) => {
   }
 })
 
-router.post('/users/create', (req, res) => {
-  const email = req.body.email
-  const userName = req.body.userName
-  const password = req.body.password
+router.post('/users/create', Usuarios.userCreate )
 
-  //verificando se email e usuario ja existe
-  User.findOne({
-    where: { email: email, userName: userName }
-  }).then(user => {
-    if (user == undefined) {
-      //criptografando senha
-      let salt = bcrypt.genSaltSync(10)
-      const hash = bcrypt.hashSync(password, salt)
+// router.post('/users/create', (req, res) => {
+//   const email = req.body.email
+//   const userName = req.body.userName
+//   const password = req.body.password
 
-      User.create({
-        userName: userName,
-        email: email,
-        password: hash,
-        isAdmin: true
-      }).then(() => {
-        res.send('Cadastrado')
-      }).catch((erro) => {
-        res.send(erro)
-      })
-    } else {
-      res.send('usuário/email ja cadastrado')
-    }
-  })
-})
+//   //verificando se email e usuario ja existe
+//   User.findOne({
+//     where: { email: email, userName: userName }
+//   }).then(user => {
+//     if (user == undefined) {
+//       //criptografando senha
+//       let salt = bcrypt.genSaltSync(10)
+//       const hash = bcrypt.hashSync(password, salt)
+
+//       User.create({
+//         userName: userName,
+//         email: email,
+//         password: hash,
+//         isAdmin: true
+//       }).then(() => {
+//         res.send('Cadastrado')
+//       }).catch((erro) => {
+//         res.send(erro)
+//       })
+//     } else {
+//       res.send('usuário/email ja cadastrado')
+//     }
+//   })
+// })
 
 module.exports = router

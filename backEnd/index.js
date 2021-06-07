@@ -7,6 +7,7 @@ const connection = require('./database/database.js')
 app.use(cors());
 
 //importando rotas
+const login = require("./login/loginRoutesloginRoutes")
 const categoriesController = require('./categories/CategoriesController')
 const articlesController = require('./articles/ArticlesController')
 const usersController = require('./users/UsersController')
@@ -30,9 +31,10 @@ connection
   })
 
 //definindo rotas
-app.use('/', categoriesController)
-app.use('/', articlesController)
-app.use('/', usersController)
+app.use('/', login)
+app.use('/categories', categoriesController)
+app.use('/articles', articlesController)
+app.use('/users', usersController)
 
 
 app.get('/', (req, res) => {

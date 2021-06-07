@@ -1,33 +1,48 @@
-
-
-
+const User = require('./User')
+const bcrypt = require('bcrypt')
 
 exports.userCreate = async (req, res, next) => {
-  const email = req.body.email
-  const userName = req.body.userName
-  const password = req.body.password
+  try {
 
-  //verificando se email e usuario ja existe
-  User.findOne({
-    where: { email: email, userName: userName }
-  }).then(user => {
-    if (user == undefined) {
-      //criptografando senha
-      let salt = bcrypt.genSaltSync(10)
-      const hash = bcrypt.hashSync(password, salt)
+    let email = req.body.email
+    let userName = req.body.userName
+    let password = req.body.password
 
-      User.create({
-        userName: userName,
-        email: email,
-        password: hash,
-        isAdmin: true
-      }).then(() => {
-        res.json('cadastrado')
-      }).catch((erro) => {
-        res.send(erro)
-      })
+    // Transformando a senha em um hash
+    let salt = bcrypt.genSaltSync(10)
+    const hash = bcrypt.hashSync(password, salt)
+    const user = {
+      email: email,
+      userName: userName,
+      password: hash,
+      isAdmin: true
+
+    };
+    const existe = await User.findOne({ where: { email: email } });
+    if (existe === null) {
+      await User.create({
+        ...user,
+      });
+      res.status(200).send();
     } else {
-      res.json('usuário/email ja cadastrado')
+      res.json("Email já cadastrado no sistema.");
     }
-  })
+  } catch (erro) {
+    next(erro);
+  }
 }
+
+
+
+// Busca um usuario pelo login e retorna ele se ele existe
+exports.acharUsuario = async (userName) => {
+  try {
+    const usuario = await Usuarios.findOne({
+      where: { userName },
+    });
+    console.log(usuario.dataValues)
+    return usuario.dataValues;
+  } catch (erro) {
+    return erro;
+  }
+};
