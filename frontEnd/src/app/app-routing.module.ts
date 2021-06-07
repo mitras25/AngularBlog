@@ -1,3 +1,7 @@
+import { AuthGuard } from './account/shared/auth.guard';
+import { LoginComponent } from './account/login/login.component';
+import { AuthenticationComponent } from './layout/authentication/authentication.component';
+import { LayoutHomeComponent } from './layout/layout-home/layout-home.component';
 import { ArticleCrudComponent } from './views/article-crud/article-crud/article-crud.component';
 import { ArticleUpdateComponent } from './components/article/article-update/article-update.component';
 import { ArticleDeleteComponent } from './components/article/article-delete/article-delete.component';
@@ -13,56 +17,37 @@ import { HomeComponent } from './views/home/home.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryCrudComponent } from './views/category-crud/category-crud/category-crud.component';
+import { componentFactoryName } from '@angular/compiler';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
+  {path: '',
+  component: LayoutHomeComponent,
+  children:[
+     {path: '',component: HomeComponent },
+  {path: 'usuarios',component: UsuarioCrudComponent},
+  //{path: 'usuarios/create',component: UsuarioCreateComponent},
+  {path: 'category', component: CategoryCrudComponent},
+  {path: 'category/create',component: CategoryCreateComponent},
+  {path: 'category/read',component: CategoryReadComponent},
+  {path: 'category/delete',component: CategoryDeleteComponent},
+  {path: 'article',component: ArticleCrudComponent},
+  {path: 'article/create',component: ArticleCreateComponent},
+  {path: 'article/read', component: ArticleReadComponent},
+  {path: 'article/delete', component: ArticleDeleteComponent},
+  {path: 'article/update',component: ArticleUpdateComponent},
+  ],
+  //verificando se esta logado
+  canActivate: [AuthGuard]
   },
-  {
-    path: 'usuarios',
-    component: UsuarioCrudComponent,
-  },
-  {
-    path: 'usuarios/create',
-    component: UsuarioCreateComponent,
-  },
-  {
-    path: 'category',
-    component: CategoryCrudComponent,
-  },
-  {
-    path: 'category/create',
-    component: CategoryCreateComponent,
-  },
-  {
-    path: 'category/read',
-    component: CategoryReadComponent,
-  },
-  {
-    path: 'category/delete',
-    component: CategoryDeleteComponent,
-  },
-  {
-    path: 'article',
-    component: ArticleCrudComponent,
-  },
-  {
-    path: 'article/create',
-    component: ArticleCreateComponent,
-  },
-  {
-    path: 'article/read',
-    component: ArticleReadComponent,
-  },
-  {
-    path: 'article/delete',
-    component: ArticleDeleteComponent,
-  },
-  {
-    path: 'article/update',
-    component: ArticleUpdateComponent,
-  },
+  {path: "",
+component: AuthenticationComponent,
+children: [
+  {path: '', redirectTo: 'login', pathMatch:'full'},
+  {path: 'login', component:LoginComponent},
+  {path: 'usuarios/create',component: UsuarioCreateComponent}
+]
+}
+ 
 ];
 
 @NgModule({

@@ -7,7 +7,7 @@ const connection = require('./database/database.js')
 app.use(cors());
 
 //importando rotas
-const login = require("./login/loginRoutesloginRoutes")
+const login = require("./login/loginRoutes")
 const categoriesController = require('./categories/CategoriesController')
 const articlesController = require('./articles/ArticlesController')
 const usersController = require('./users/UsersController')

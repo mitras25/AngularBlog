@@ -1,14 +1,14 @@
-.card{
- width:  25rem;
- margin: 3rem auto;
-}
-
-
 form{
   display: flex;
   flex-direction: column;
+ 
 }
 
 button{
   margin: 1rem;
+}
+
+.card{
+  width: 20rem;
+  margin: 3rem auto;
 }

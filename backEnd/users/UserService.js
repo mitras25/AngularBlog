@@ -35,12 +35,11 @@ exports.userCreate = async (req, res, next) => {
 
 
 // Busca um usuario pelo login e retorna ele se ele existe
-exports.acharUsuario = async (userName) => {
+exports.acharUsuario = async (email) => {
   try {
-    const usuario = await Usuarios.findOne({
-      where: { userName },
+    const usuario = await User.findOne({
+      where: { email },
     });
-    console.log(usuario.dataValues)
     return usuario.dataValues;
   } catch (erro) {
     return erro;

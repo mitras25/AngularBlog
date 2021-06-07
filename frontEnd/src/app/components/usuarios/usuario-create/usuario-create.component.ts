@@ -20,9 +20,9 @@ export class UsuarioCreateComponent implements OnInit {
   ngOnInit(): void {}
 
   createUser(): void {
-    this.usuarioService.create(this.usuario).subscribe(() => {
-      console.log('chegou aqui')
-      this.usuarioService.showMessage('Cadastrado com sucesso');
+    this.usuarioService.create(this.usuario).subscribe((msg) => {
+      console.log(msg)
+      this.usuarioService.showMessage(`${msg}`);
       this.router.navigate(['/']);
     });
   }

@@ -4,7 +4,7 @@ const User = require('./User')
 const bcrypt = require('bcrypt')
 const Usuarios = require('./UserService')
 
-router.get('/users', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const existe = await User.findAll();
     res.status(200);
@@ -14,36 +14,6 @@ router.get('/users', async (req, res, next) => {
   }
 })
 
-router.post('/users/create', Usuarios.userCreate )
-
-// router.post('/users/create', (req, res) => {
-//   const email = req.body.email
-//   const userName = req.body.userName
-//   const password = req.body.password
-
-//   //verificando se email e usuario ja existe
-//   User.findOne({
-//     where: { email: email, userName: userName }
-//   }).then(user => {
-//     if (user == undefined) {
-//       //criptografando senha
-//       let salt = bcrypt.genSaltSync(10)
-//       const hash = bcrypt.hashSync(password, salt)
-
-//       User.create({
-//         userName: userName,
-//         email: email,
-//         password: hash,
-//         isAdmin: true
-//       }).then(() => {
-//         res.send('Cadastrado')
-//       }).catch((erro) => {
-//         res.send(erro)
-//       })
-//     } else {
-//       res.send('usuário/email ja cadastrado')
-//     }
-//   })
-// })
+router.post('/create', Usuarios.userCreate )
 
 module.exports = router

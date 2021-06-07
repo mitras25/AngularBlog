@@ -35,6 +35,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
+import { LoginComponent } from './account/login/login.component';
+import { AuthenticationComponent } from './layout/authentication/authentication.component';
+import { LayoutHomeComponent } from './layout/layout-home/layout-home.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { MatSelectModule } from '@angular/material/select';
     CategoryCrudComponent,
     ArticleCrudComponent,
     CategoryRead2Component,
+    LoginComponent,
+    AuthenticationComponent,
+    LayoutHomeComponent,
   ],
   imports: [
     BrowserModule,

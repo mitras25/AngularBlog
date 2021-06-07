@@ -1,0 +1,34 @@
+<!-- <h2 class="text-center">Entrar</h2>
+
+<form (ngSubmit)="onSubmit()" #form='ngForm'>
+  <div class="form-group">
+    <label>E-mail</label>
+    <input type="email" class="form-control" name="email"
+    id="email" [(ngModel)]="login.email" required>
+  </div>
+  <div class="form-group">
+    <label>Senha</label>
+    <input type="password" class="form-control" name="password"
+    id="password" [(ngModel)]="login.password" required>
+  </div>
+  <button class="btn btn-primary btn-block" type="submit" [disabled]="form.form.invalid">Entrar</button>
+  <button class="btn btn-link btn-block" type="button" [routerLink]="['/usuarios/create']">Criar Login</button>
+</form> -->
+
+
+<mat-card class="card">
+  <mat-card-title>Entrar</mat-card-title>
+  <mat-card-subtitle>* campos obrigatórios</mat-card-subtitle>
+  <form #form='ngForm'>
+    <mat-form-field>
+      <input type="email" matInput placeholder="Email" [(ngModel)]="login.email" name="email" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Senha" [(ngModel)]="login.password" name="passoword" required/>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="onSubmit()" [disabled]="form.form.invalid" color="primary">
+    Entrar
+  </button>
+  <button mat-raised-button  color="accent" type="button" [routerLink]="['/usuarios/create']">Criar Usuário</button>
+</mat-card> 

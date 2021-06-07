@@ -1,14 +1,15 @@
 // Autenticação
 const jwt = require("jsonwebtoken");
-const JWTSecret = process.env.JWT_KEY;
-const bcrypt = require("bcryptjs");
+const JWTSecret = "asdz6x15c98rt74bh15q89wda321sdq8wa97qw87";
+const bcrypt = require("bcrypt");
+const userService = require('../users/UserService')
 
 exports.autenticar = async (req, res) => {
-  const { useName, password } = req.body;
+  const { email, password } = req.body;
 
-  if (useName != undefined) {
+  if (email != undefined) {
     // Buscando usuario no banco de dados
-    const usuario = await UserService.acharUsuario(useName);
+    const usuario = await userService.acharUsuario(email);
     if (usuario != undefined) {
       // Comparamos a senha com o hash da senha do Banco de dados
       bcrypt
