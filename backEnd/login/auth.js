@@ -24,7 +24,7 @@ exports.autenticar = async (req, res) => {
                 idUsuario: usuario.id,
               },
               JWTSecret,
-              { expiresIn: "12h" },
+              { expiresIn: "1h" },
               (err, token) => {
                 if (err) {
                   res.status(400); // requisição invalida

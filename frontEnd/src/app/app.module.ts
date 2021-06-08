@@ -1,4 +1,4 @@
-import { httpInterceptorProviders } from './http-interceptors/index';
+//import { httpInterceptorProviders } from './http-interceptors';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -83,7 +83,7 @@ import { LayoutHomeComponent } from './layout/layout-home/layout-home.component'
     MatSelectModule,
   ],
   providers: [
-    httpInterceptorProviders
+    //httpInterceptorProviders
   ],
   bootstrap: [AppComponent],
 })

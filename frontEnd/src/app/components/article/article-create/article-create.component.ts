@@ -4,6 +4,7 @@ import { Category } from '../../category/category.model';
 import { CategoryService } from '../../category/category.service';
 import { Articles } from '../article.model';
 import { ArticleService } from '../article.service';
+import jwt from 'jwt-decode'
 
 @Component({
   selector: 'app-article-create',
@@ -33,11 +34,17 @@ export class ArticleCreateComponent implements OnInit {
     this.categoryService.read().subscribe((categories) => {
       this.categories = categories;
     });
+    const token = window.localStorage.getItem('token')
+
+  }
+
+  getToken(token: string) {
+    const decoded: any = jwt(token)
+    console.log(decoded)
   }
 
 
   createArticle(): void {
-    
     console.log( this.article)
     // this.articleService.create(this.article).subscribe(() => {
     //   this.articleService.showMessage('Cadastrado com sucesso front');

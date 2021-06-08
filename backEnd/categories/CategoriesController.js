@@ -4,7 +4,7 @@ const Category = require('./Category')
 const slugify = require('slugify')
 
 
-router.get('/categories', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const existe = await Category.findAll();
     res.status(200);
@@ -15,7 +15,7 @@ router.get('/categories', async (req, res, next) => {
 }
 )
 
-router.post('/categories/create', (req, res) => {
+router.post('/create', (req, res) => {
   const title = req.body.title
   if (title != undefined) {
     Category.create({
@@ -30,7 +30,7 @@ router.post('/categories/create', (req, res) => {
   }
 })
 
-router.delete('/admin/categories/delete', (req, res) => {
+router.delete('/delete', (req, res) => {
   const id = req.body.id
   if (id != undefined) {
     if (!isNaN(id)) {
@@ -48,7 +48,7 @@ router.delete('/admin/categories/delete', (req, res) => {
   }
 })
 
-router.get('/admin/categories/edit/:id', (req, res) => {
+router.get('/edit/:id', (req, res) => {
   const id = req.params.id
   if (isNaN(id)) {
     res.redirect('/admin/categories')
@@ -66,7 +66,7 @@ router.get('/admin/categories/edit/:id', (req, res) => {
 })
 
 
-router.put('/admin/categories/update', (req, res) => {
+router.put('/update', (req, res) => {
   const id = req.body.id
   const title = req.body.title
 

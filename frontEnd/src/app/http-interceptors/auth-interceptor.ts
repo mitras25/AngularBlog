@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 // import {
 //   HttpEvent,
 //   HttpInterceptor,
@@ -13,33 +13,33 @@ import { Injectable } from '@angular/core';
 
 // @Injectable()
 // export class AuthInterceptor implements HttpInterceptor {
-  // constructor(private accountService: AccountService) {}
+//   constructor(private accountService: AccountService) {}
 
-  // intercept(req: HttpRequest<any>, next: HttpHandler) {
-  //   const token = this.accountService.getAuthorizationToken();
-  //   let request: HttpRequest<any> = req;
+//   intercept(req: HttpRequest<any>, next: HttpHandler) {
+//     const token = this.accountService.getAuthorizationToken();
+//     let request: HttpRequest<any> = req;
 
-  //   if (token) {
-  //     request = req.clone({
-  //       headers: req.headers.set('Authorization', `Bearer ${token}`),
-  //     });
-  //   }
-  //   //retorna o request com o erro tratado
-  //   return next.handle(request).pipe(catchError(this.handleError));
-  // }
+//     if (token) {
+//       request = req.clone({
+//         headers: req.headers.set('Authorization', `Bearer ${token}`),
+//       });
+//     }
+//     //retorna o request com o erro tratado
+//     return next.handle(request).pipe(catchError(this.handleError));
+//   }
 
-  // private handleError(error: HttpErrorResponse) {
-  //   if (error.error instanceof ErrorEvent) {
-  //     //erro de client-side ou de rede
-  //     console.error('ocorreu um erro: ', error.error.message);
-  //   } else {
-  //     //erro retornado pelo back
-  //     console.error(
-  //       `Código do erro ${error.status}, ` +
-  //         `Erro: ${JSON.stringify(error.error)}`
-  //     );
-  //   }
-  //   //retornar um observable com uma mensagem amigavel
-  //   return throwError('Ocorreu um erro, tente novamente');
-  // }
-//}
+//   private handleError(error: HttpErrorResponse) {
+//     if (error.error instanceof ErrorEvent) {
+//       //erro de client-side ou de rede
+//       console.error('ocorreu um erro: ', error.error.message);
+//     } else {
+//       //erro retornado pelo back
+//       console.error(
+//         `Código do erro ${error.status}, ` +
+//           `Erro: ${JSON.stringify(error.error)}`
+//       );
+//     }
+//     //retornar um observable com uma mensagem amigavel
+//     return throwError('Ocorreu um erro, tente novamente');
+//   }
+// }

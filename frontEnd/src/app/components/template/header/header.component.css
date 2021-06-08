@@ -1,6 +1,7 @@
 .header{
   display: flex;
   align-items: center;
+
 }
 
 .header a {
@@ -18,4 +19,9 @@ padding-left: 25px;
 }
 .header .title-group i{
 padding-right: 5px;
+}
+
+.header .class{
+ margin-left: 10rem;
+ background-color: brown;
 }

@@ -5,7 +5,7 @@ const router = express.Router()
 const Category = require('../categories/Category')
 
 // listando todos os artigos
-router.get('/admin/articles', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const existe = await Article.findAll({
       //ordenando pelo mais recente
@@ -19,7 +19,7 @@ router.get('/admin/articles', async (req, res, next) => {
 })
 
 //buscando as Categorias para colocar no select
-router.get('/admin/articles/new', (req, res) => {
+router.get('/create', (req, res) => {
   Category.findAll({
     //incluindo as categorias na lista
     include: [{model: Category}]
@@ -31,7 +31,7 @@ router.get('/admin/articles/new', (req, res) => {
     })
 })
 
-router.post("/admin/articles/save", (req, res)=>{
+router.post("/save", (req, res)=>{
   const title = req.body.title
   const body = req.body.body
   const category = req.body.category
@@ -49,7 +49,7 @@ router.post("/admin/articles/save", (req, res)=>{
   })
 })
 
-router.delete('/admin/articles/delete', (req, res) => {
+router.delete('/delete', (req, res) => {
   const id = req.body.id
   if (id != undefined) {
     if (!isNaN(id)) {
@@ -68,7 +68,7 @@ router.delete('/admin/articles/delete', (req, res) => {
 })
 
 //editar artigo
-router.get('/admin/articles/edit/:id', (req, res)=>{
+router.get('/edit/:id', (req, res)=>{
   const id = req.params.id
   Article.findByPk(id)
   .then(article => {
@@ -86,7 +86,7 @@ router.get('/admin/articles/edit/:id', (req, res)=>{
 })
 
 
-router.put('/admin/articles/update', (req, res) => {
+router.put('/update', (req, res) => {
   const id = req.body.id
   const title = req.body.title
   const body = req.body.body

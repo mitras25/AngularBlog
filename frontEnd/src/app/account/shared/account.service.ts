@@ -1,7 +1,9 @@
-//import {jwt} from "jwt-decode";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core'
+//import * as jwt from 'jsonwebtoken'
+import jwt from "jwt-decode";
+
 
 
 
@@ -33,27 +35,46 @@ export class AccountService {
    }
    return false
   }
+
+
+  getAuthorizationToken() {
+    const token = window.localStorage.getItem('token')
+    return token
+  }
+
+getTokenExpirationDate(token: string): Date{
+    const decoded: any = jwt(token)
+    // if(decoded.exp === undefined){
+    //   return date
+    // }
+    const date = new Date(0)
+    date.setUTCSeconds(decoded.exp)
+    return date
+  }
+
+  isTokenExpeired(token?: string): boolean {
+    
+    if(!token){
+      return true
+    }
+
+    const date = this.getTokenExpirationDate(token)
+    if (date === undefined){
+      return false
+    }
+
+    return !(date.valueOf() > new Date().valueOf())
+  }
+
+
+  isUserLoggedIn(){
+    const token = this.getAuthorizationToken()
+    if(!token){
+      return false
+    }else if( this.isTokenExpeired(token)){
+      return false
+    }
+    return true
+  }
+
 }
-//   getAuthorizationToken(){
-//     const token = window.localStorage.getItem('token')
-//     return token
-//   }
-
-//   getTokenExpirationDate(token: string): Date{
-//     const decoded: any = jwt(token)
-
-//     if(decoded.exp === undefined){
-//       return ;
-//     }
-//     const date = new Date(0)
-//     date.setUTCSeconds(decoded.exp)
-//     return date
-//   }
-
-
-// }
-
-// function jwt_decode(token: string): any {
-//   throw new Error('Function not implemented.');
-// }
-
