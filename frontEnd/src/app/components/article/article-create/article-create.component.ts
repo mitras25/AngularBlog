@@ -15,7 +15,7 @@ export class ArticleCreateComponent implements OnInit {
   article: Articles = {
     title: '',
     body: '',
-    idUser: 1,
+    idUser: null,
     idCategory: null
   }
   selectedValue: [] = []
@@ -33,23 +33,22 @@ export class ArticleCreateComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.read().subscribe((categories) => {
       this.categories = categories;
+
     });
-    const token = window.localStorage.getItem('token')
-
+  
   }
 
-  getToken(token: string) {
-    const decoded: any = jwt(token)
-    console.log(decoded)
-  }
 
 
   createArticle(): void {
     console.log( this.article)
-    // this.articleService.create(this.article).subscribe(() => {
-    //   this.articleService.showMessage('Cadastrado com sucesso front');
-    //   this.router.navigate(['/article']);
-    // });
+    const token = localStorage.getItem("token");
+    const user = token ? jwt(token) : null
+   
+    this.articleService.create(this.article, user).subscribe(() => {
+      this.articleService.showMessage('Cadastrado com sucesso front');
+      this.router.navigate(['/article']);
+    });
   }
 
   cancel(): void {

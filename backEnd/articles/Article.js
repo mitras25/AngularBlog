@@ -16,7 +16,8 @@ const Article = connection.define('articles', {
   body: {
     type: Sequelize.TEXT,
     allowNull: false
-  }
+  },
+  
 })
 
 Category.hasMany(Article) // Relacionamento de categoria possui varios artigos
@@ -24,6 +25,6 @@ User.hasMany(Article)// Relacionamento de usuarios possui varios artigos
 
 
 //criando tabela caso nao exista
-//Article.sync({force: false})
+Article.sync({force: false})
 
 module.exports = Article

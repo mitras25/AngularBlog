@@ -18,30 +18,20 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//buscando as Categorias para colocar no select
-router.get('/create', (req, res) => {
-  Category.findAll({
-    //incluindo as categorias na lista
-    include: [{model: Category}]
-  })
-    .then(categories => {
-      res.send('criou novo artigo')
-    }).catch(erro => {
-      send(erro)
-    })
-})
-
-router.post("/save", (req, res)=>{
+router.post("/create/:id", (req, res)=>{
   const title = req.body.title
   const body = req.body.body
-  const category = req.body.category
+  const idCategory = req.body.idCategory
+  const idUsuario = req.params.id
 
 
   Article.create({
     title: title,
     slug: slugify(title),
     body: body,
-    categoryId: category
+    categoryId: idCategory,
+    userId: idUsuario
+
   }).then(()=>{
     res.send('Cadastrado')
   }).catch(erro=>{

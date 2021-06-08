@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { Articles } from './article.model';
+import jwt from 'jwt-decode'
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,10 @@ export class ArticleService {
       verticalPosition: 'top',
     });
   }
-
+ 
   //criando
-  create(article: Articles): Observable<Articles>{
-    return this.http.post<Articles>(`${this.baseUrl}/create`, article)
+  create(article: Articles, user: any): Observable<Articles>{
+    return this.http.post<Articles>(`${this.baseUrl}/create/${user.idUsuario}`, article)
   }
 
   //lendo

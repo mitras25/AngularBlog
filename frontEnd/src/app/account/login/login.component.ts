@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   async onSubmit(){
     try{
       const result = await this.accountService.login(this.login)
-      console.log(window.localStorage.token)
+    
       //navega para a rota vazia
       this.router.navigate([''])
     }catch(error){
