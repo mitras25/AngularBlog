@@ -1,5 +1,5 @@
 //import { httpInterceptorProviders } from './http-interceptors';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +40,10 @@ import { LoginComponent } from './account/login/login.component';
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
 import { LayoutHomeComponent } from './layout/layout-home/layout-home.component';
 
+import { registerLocaleData } from '@angular/common';
+import  localePt  from '@angular/common/locales/pt';
+
+registerLocaleData(localePt)
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +88,8 @@ import { LayoutHomeComponent } from './layout/layout-home/layout-home.component'
   ],
   providers: [
     //httpInterceptorProviders
+
+    {provide: LOCALE_ID,useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent],
 })

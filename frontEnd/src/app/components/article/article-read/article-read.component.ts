@@ -1,4 +1,6 @@
+import { Articles } from './../article.model';
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../article.service';
 
 @Component({
   selector: 'app-article-read',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleReadComponent implements OnInit {
 
-  constructor() { }
+  articles: Articles[] = [];
+  displayedColumns = ['id', 'title', 'categoryId', 'userId', 'createdAtdata', 'action']
+
+  constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
+    this.articleService.read().subscribe((article) => {
+      this.articles = article;
+      console.log(article)
+    });
   }
 
 }
