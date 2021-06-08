@@ -1,3 +1,4 @@
+import { ListLogoutComponent } from './layout/list-logout/list-logout.component';
 import { AuthGuard } from './account/shared/auth.guard';
 import { LoginComponent } from './account/login/login.component';
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
@@ -13,6 +14,7 @@ import { CategoryCreateComponent } from './components/category/category-create/c
 import { UsuarioCreateComponent } from './components/usuarios/usuario-create/usuario-create.component';
 import { UsuarioCrudComponent } from './views/usuario-crud/usuario-crud.component';
 import { HomeComponent } from './views/home/home.component';
+
 
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -42,7 +44,8 @@ const routes: Routes = [
   {path: "",
 component: AuthenticationComponent,
 children: [
-  {path: '', redirectTo: 'login', pathMatch:'full'},
+  {path: '', redirectTo: 'lista', pathMatch:'full'},
+  {path: 'lista', component: ListLogoutComponent},
   {path: 'login', component:LoginComponent},
   {path: 'usuarios/create',component: UsuarioCreateComponent}
 ]

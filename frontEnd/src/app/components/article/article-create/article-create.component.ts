@@ -47,11 +47,11 @@ export class ArticleCreateComponent implements OnInit {
    
     this.articleService.create(this.article, user).subscribe(() => {
       this.articleService.showMessage('Cadastrado com sucesso front');
-      this.router.navigate(['/article']);
+      this.router.navigate(['/article/read']);
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/article']);
+    this.router.navigate(['/article/read']);
   }
 }

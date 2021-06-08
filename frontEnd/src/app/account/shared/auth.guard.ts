@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
         return true;
       }else{
         //se nao tiver token retorna para tela de login
-        this.router.navigate(['login']);
+        this.router.navigate(['lista']);
         return false;
       }
     
