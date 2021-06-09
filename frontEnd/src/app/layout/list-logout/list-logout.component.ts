@@ -10,7 +10,7 @@ import { Articles } from '../../components/article/article.model';
 export class ListLogoutComponent implements OnInit {
   
     articles: Articles[] = [];
-    displayedColumns = ['id', 'title', 'categoryId', 'userId', 'createdAtdata']
+    displayedColumns = ['id', 'title', 'categoryId', 'userId', 'createdAtdata', 'action']
   
     constructor(private articleService: ArticleService) {}
   

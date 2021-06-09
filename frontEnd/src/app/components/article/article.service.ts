@@ -52,6 +52,14 @@ export class ArticleService {
     return this.http.delete<Articles>(url)
   }
 
+  update(article: Articles): Observable<Articles> {
+    const url = `${this.baseUrl}/update/${article.id}`;
+    return this.http.put<Articles>(url, article)
+  }
+  
+
+
+
   errorHandler(e: any): Observable<any>{
     this.showMessage('Ocorreu um erro', true)
     return EMPTY

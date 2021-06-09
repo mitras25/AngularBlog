@@ -1,1 +1,27 @@
-<p>article-update works!</p>
+
+<mat-card>
+  <mat-card-title>Editar Artigo</mat-card-title>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="titulo do Artigo" [(ngModel)]="articles.title" name="article" required/>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Categoria</mat-label>
+      <mat-select [(ngModel)]="articles.categoryId" name="category">
+        <mat-option *ngFor="let category of categories" [value]="category.id" required>
+          {{category.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Digite seu texto" cols="30" rows="12" [(ngModel)]="articles.body" name="body"></textarea>
+    </mat-form-field>
+
+  </form>
+  <button mat-raised-button (click)="updateArticle()" color="primary">
+    Editar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="accent">Cancelar</button>
+</mat-card> 
