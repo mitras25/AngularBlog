@@ -43,6 +43,7 @@ import { LayoutHomeComponent } from './layout/layout-home/layout-home.component'
 import { registerLocaleData } from '@angular/common';
 import  localePt  from '@angular/common/locales/pt';
 import { ListLogoutComponent } from './layout/list-logout/list-logout.component';
+import { ArticleLeituraComponent } from './components/article/article-leitura/article-leitura.component';
 
 registerLocaleData(localePt)
 @NgModule({
@@ -68,6 +69,7 @@ registerLocaleData(localePt)
     AuthenticationComponent,
     LayoutHomeComponent,
     ListLogoutComponent,
+    ArticleLeituraComponent,
   ],
   imports: [
     BrowserModule,

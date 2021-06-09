@@ -1,3 +1,4 @@
+import { ArticleLeituraComponent } from './components/article/article-leitura/article-leitura.component';
 import { ListLogoutComponent } from './layout/list-logout/list-logout.component';
 import { AuthGuard } from './account/shared/auth.guard';
 import { LoginComponent } from './account/login/login.component';
@@ -47,7 +48,8 @@ children: [
   {path: '', redirectTo: 'lista', pathMatch:'full'},
   {path: 'lista', component: ListLogoutComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'usuarios/create',component: UsuarioCreateComponent}
+  {path: 'usuarios/create',component: UsuarioCreateComponent},
+  {path: 'article/leitura/:id',component: ArticleLeituraComponent},
 ]
 }
  
