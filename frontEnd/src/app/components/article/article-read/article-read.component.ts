@@ -1,6 +1,7 @@
 import { Articles } from './../article.model';
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
+import jwt from 'jwt-decode'
 
 @Component({
   selector: 'app-article-read',
@@ -15,9 +16,11 @@ export class ArticleReadComponent implements OnInit {
   constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
-    this.articleService.read().subscribe((article) => {
+    const token = localStorage.getItem("token");
+    const user = token ? jwt(token) : null
+
+    this.articleService.myArticles(user).subscribe((article) => {
       this.articles = article;
-      console.log(article)
     });
   }
 

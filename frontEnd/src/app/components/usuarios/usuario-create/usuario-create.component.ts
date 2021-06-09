@@ -23,7 +23,7 @@ export class UsuarioCreateComponent implements OnInit {
     this.usuarioService.create(this.usuario).subscribe((msg) => {
       console.log(msg)
       this.usuarioService.showMessage(`${msg}`);
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     });
   }
 

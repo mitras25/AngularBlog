@@ -1,7 +1,10 @@
+import { Category } from '../../category/category.model';
+import { CategoryService } from './../../category/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Articles } from '../article.model';
 import { ArticleService } from '../article.service';
+
 
 @Component({
   selector: 'app-article-delete',
@@ -12,9 +15,12 @@ export class ArticleDeleteComponent implements OnInit {
   articles: Articles = {
     title: '',
     body: '',
-    idUser: null,
-    idCategory: null
+    userId: null,
+    categoryId: null
   }
+
+  categories: Category[] = []
+
 
 
   displayedColumns = [
@@ -29,15 +35,20 @@ export class ArticleDeleteComponent implements OnInit {
   constructor(
     private articleServer: ArticleService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit(): void {
   const id = this.route.snapshot.paramMap.get('id')
   this.articleServer.readById(id).subscribe(article =>{
     this.articles = article
-    console.log('pagina de delete')
-    console.log(this.articles)
+    const idCat = article.categoryId 
+
+  this.categoryService.readById(idCat).subscribe(categories =>{
+    this.categories = categories
+    console.log(categories)
+  })
   })
 }
 
@@ -46,12 +57,12 @@ export class ArticleDeleteComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.articleServer.delete(id).subscribe(() => {
       this.articleServer.showMessage('Item Excluido com sucesso');
-      this.router.navigate(['/articles/read']);
+      this.router.navigate(['/article/read']);
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/articles/read']);
+    this.router.navigate(['/article/read']);
   }
 }
 

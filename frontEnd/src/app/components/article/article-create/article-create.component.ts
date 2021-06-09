@@ -15,8 +15,8 @@ export class ArticleCreateComponent implements OnInit {
   article: Articles = {
     title: '',
     body: '',
-    idUser: null,
-    idCategory: null
+    userId: null,
+    categoryId: null
   }
   selectedValue: [] = []
  
@@ -33,7 +33,6 @@ export class ArticleCreateComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.read().subscribe((categories) => {
       this.categories = categories;
-
     });
   
   }
@@ -41,7 +40,6 @@ export class ArticleCreateComponent implements OnInit {
 
 
   createArticle(): void {
-    console.log( this.article)
     const token = localStorage.getItem("token");
     const user = token ? jwt(token) : null
    

@@ -1,6 +1,6 @@
 export interface Articles {
   title: string
   body: string
-  idUser: number | null
-  idCategory: number | null
+  userId: number | null
+  categoryId: number | null
 }

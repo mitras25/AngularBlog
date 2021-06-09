@@ -32,11 +32,16 @@ export class ArticleService {
   read(): Observable<Articles[]>{
     return this.http.get<Articles[]>(this.baseUrl)
   }
+  //Buscando artigos por autor
+  myArticles(user: any): Observable<Articles[]>{
+    return this.http.get<Articles[]>(`${this.baseUrl}/articleAutor/${user.idUsuario}`)
+  }
 
 
   readById(id: string | null): Observable<Articles> {
     const url = `${this.baseUrl}/buscar/${id}`;
-    return this.http.get<Articles>(url).pipe(
+    return this.http.get<Articles>(url)
+    .pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
@@ -44,10 +49,7 @@ export class ArticleService {
 
   delete(id: string | null): Observable<Articles> {
     const url = `${this.baseUrl}/delete/${id}`;
-    return this.http.delete<Articles>(url).pipe(
-      map(obj => obj),
-      catchError(e => this.errorHandler(e))
-    );
+    return this.http.delete<Articles>(url)
   }
 
   errorHandler(e: any): Observable<any>{

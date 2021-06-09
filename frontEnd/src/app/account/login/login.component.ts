@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate([''])
     }catch(error){
       this.accountService.showMessage('Dados inválidos');
-      this.router.navigate(['/login']);
+      this.router.navigate(['lista']);
     }
   }
 

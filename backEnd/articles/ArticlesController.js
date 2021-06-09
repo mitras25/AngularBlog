@@ -10,104 +10,108 @@ router.get('/', async (req, res, next) => {
   try {
     const existe = await Article.findAll({
       //ordenando pelo mais recente
-      order:[['id', 'DESC']]
+      order: [['id', 'DESC']]
     });
-    res.status(200);
     res.json(existe);
   } catch (erro) {
     next(erro);
   }
 })
 
-router.post("/create/:id", (req, res)=>{
-  const title = req.body.title
-  const body = req.body.body
-  const idCategory = req.body.idCategory
-  const idUsuario = req.params.id
 
-
-  Article.create({
-    title: title,
-    slug: slugify(title),
-    body: body,
-    categoryId: idCategory,
-    userId: idUsuario
-
-  }).then(()=>{
-    res.send('Cadastrado')
-  }).catch(erro=>{
-    res.send(erro)
-  })
-})
-
-router.delete('/delete/:id', (req, res) => {
-  const id = req.params.id
-  if (id != undefined) {
-    if (!isNaN(id)) {
-      Article.destroy({
-        where: { id: id }
-      }).then(() => {
-        res.send('Deletado com sucesso')
-        res.redirect('/articles')
-      })
-    } else { //se não for número
-      res.redirect('/articles')
-    }
-  } else {// se for nulo ou indefinido
-    res.redirect('/articles')
+// listando todos os artigos
+router.get('/articleAutor/:id', async (req, res, next) => {
+  const userId = req.params.id
+  try {
+    const existe = await Article.findAll({ where: { userId: userId } });
+    res.json(existe);
+  } catch (erro) {
+    next(erro);
   }
 })
 
-//editar artigo
-router.get('/edit/:id', (req, res)=>{
-  const id = req.params.id
-  Article.findByPk(id)
-  .then(article => {
-    if(article != undefined){
-      Category.findAll()
-      .then(categories=>{
-        res.send(categories)
-      })
-    }else{
-      res.send('Item invalido')
-    }
-  }).catch((erro)=>{
-    res.send(erro)
-  })
-})
-
 //buscar artigo por id
-router.get('/buscar/:id', (req, res)=>{
-  const id = req.params.id
-  Article.findByPk(id, {include: [Category, User]})
-    .then(articles=>{
-        res.send(articles)
-  }).catch((erro)=>{
-    res.send(erro)
-  })
+router.get('/buscar/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const article = await Article.findByPk(id)
+    res.status(200);
+    res.send(article);
+  } catch (erro) {
+    next(erro);
+  }
 })
 
 
-router.put('/update', (req, res) => {
-  const id = req.body.id
+router.post("/create/:id", async (req, res, next) => {
+  try {
+    const title = req.body.title
+    const body = req.body.body
+    const categoryId = req.body.categoryId
+    const userId = req.params.id
+
+    const article = await Article.create({
+      title: title,
+      slug: slugify(title),
+      body: body,
+      categoryId: categoryId,
+      userId: userId
+
+    })
+    res.json(article)
+  } catch (erro) {
+    next(erro)
+  }
+})
+
+router.delete('/delete/:id', async (req, res, next) => {
+  const id = req.params.id
+  if (id != undefined) {
+    if (!isNaN(id)) {
+      try {
+        const deletar = await Article.destroy({ where: { id: id } })
+        res.json("deletado")
+      } catch (erro) {
+        next(erro)
+      }
+    } else { //se não for número
+      res.send(erro)
+    }
+  } else {// se for nulo ou indefinido
+    res.send(erro)
+  }
+})
+
+
+router.put('/update/:id', (req, res, next) => {
+  const id = req.params.id
   const title = req.body.title
   const body = req.body.body
   const category = req.body.categoryId
+  const userId = req.body.userId
   console.log(req.body)
+  try {
+    const article = Article.update({
+      title: title,
+      slug: slugify(title),
+      body: body,
+      categoryId: category,
+      userId: userId
+    }, { where: { id: id } })
+
+    res.json('Atualizado com sucesso')
+
+  } catch (erro) {
+    next(erro)
+  }
+})
 
 
-  Article.update({
-     title: title, 
-     slug: slugify(title),
-     body: body,
-     categoryId: category
-    }, {
-    where: { id: id}
-  }).then(() => {
-  res.send('Atualizado com sucesso')
-}).catch(erro => {
-  res.send(erro)
-})
-})
+
+
+
+
+
+
 
 module.exports = router

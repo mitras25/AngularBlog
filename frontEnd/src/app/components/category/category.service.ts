@@ -31,5 +31,10 @@ export class CategoryService {
     return this.http.get<Category[]>(this.baseUrl)
   }
 
+  //lendo
+  readById(id: any): Observable<Category[]>{
+    return this.http.get<Category[]>(`${this.baseUrl}/buscar/${id}`)
+  }
+
   
 }

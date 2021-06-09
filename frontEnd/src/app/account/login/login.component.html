@@ -7,7 +7,7 @@
       <input type="email" matInput placeholder="Email" [(ngModel)]="login.email" name="email" required/>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Senha" [(ngModel)]="login.password" name="passoword" required/>
+      <input type= "password" matInput placeholder="Senha" [(ngModel)]="login.password" name="passoword" required/>
     </mat-form-field>
   </form>
   <button mat-raised-button (click)="onSubmit()" [disabled]="form.form.invalid" color="primary">

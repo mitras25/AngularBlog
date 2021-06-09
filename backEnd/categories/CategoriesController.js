@@ -48,21 +48,15 @@ router.delete('/delete', (req, res) => {
   }
 })
 
-router.get('/edit/:id', (req, res) => {
+router.get('/buscar/:id',async (req, res, next)=>{
+  try {
   const id = req.params.id
-  if (isNaN(id)) {
-    res.redirect('/admin/categories')
+  const category = await Category.findByPk(id)
+    res.status(200);
+    res.send(category);
+  } catch (erro) {
+    next(erro);
   }
-
-  Category.findByPk(id).then(category => {
-    if (category != undefined) {
-      res.send("achou")
-    } else {
-      res.redirect('/admin/categories')
-    }
-  }).catch(erro => {
-    res.redirect('/admin/categories')
-  })
 })
 
 
