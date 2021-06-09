@@ -35,8 +35,8 @@ const routes: Routes = [
   {path: 'article',component: ArticleCrudComponent},
   {path: 'article/create',component: ArticleCreateComponent},
   {path: 'article/read', component: ArticleReadComponent},
-  {path: 'article/delete', component: ArticleDeleteComponent},
-  {path: 'article/update',component: ArticleUpdateComponent},
+  {path: 'article/delete/:id', component: ArticleDeleteComponent},
+  {path: 'article/update/:id',component: ArticleUpdateComponent},
   ],
   //verificando se esta logado
   canActivate: [AuthGuard]

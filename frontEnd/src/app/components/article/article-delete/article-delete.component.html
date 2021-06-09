@@ -1,1 +1,22 @@
-<p>article-delete works!</p>
+
+<mat-card>
+  <mat-card-title>Deletar Artigo</mat-card-title>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="titulo do Artigo" [value]="articles.title" name="article" disable/>
+    </mat-form-field>
+    
+    <mat-form-field>
+          <input matInput  [value]="articles.idCategory" name="category" disable/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Digite seu texto" cols="30" rows="12" [value]="articles.body" name="body"></textarea>
+    </mat-form-field>
+
+  </form>
+  <button mat-raised-button (click)="deleteArticle()" color="warn">
+    deletar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="accent">Cancelar</button>
+</mat-card> 
