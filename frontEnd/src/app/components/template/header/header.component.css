@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  color: #000
 }
 
 .header .logo{
@@ -22,7 +23,3 @@ padding-left: 25px;
 padding-right: 5px;
 }
 
-.header .class{
- margin-left: 10rem;
- background-color: brown;
-}

@@ -13,7 +13,7 @@
       </a>
     </span>
     <span *ngIf="!showLogin" class="logout">
-      <a mat-list-item (click)="logout()">
+      <a mat-list-item (click)="logout()" [routerLink]="['/lista']" >
         <i class="material-icons"> logout </i>
         logout
       </a>

@@ -24,6 +24,6 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.showLogin = !this.showLogin
     const token = window.localStorage.removeItem('token')
-    this.router.navigate(['/lista']);
+    //this.router.navigate(['/lista']);
   }
 }
