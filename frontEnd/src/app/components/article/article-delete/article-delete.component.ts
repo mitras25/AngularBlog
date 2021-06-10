@@ -47,7 +47,6 @@ export class ArticleDeleteComponent implements OnInit {
 
   this.categoryService.readById(idCat).subscribe(categories =>{
     this.categories = categories
-    console.log(categories)
   })
   })
 }

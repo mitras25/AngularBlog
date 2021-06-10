@@ -9,7 +9,6 @@ import { ArticleUpdateComponent } from './components/article/article-update/arti
 import { ArticleDeleteComponent } from './components/article/article-delete/article-delete.component';
 import { ArticleReadComponent } from './components/article/article-read/article-read.component';
 import { ArticleCreateComponent } from './components/article/article-create/article-create.component';
-import { CategoryDeleteComponent } from './components/category/category-delete/category-delete.component';
 import { CategoryReadComponent } from './components/category/category-read/category-read.component';
 import { CategoryCreateComponent } from './components/category/category-create/category-create.component';
 import { UsuarioCreateComponent } from './components/usuarios/usuario-create/usuario-create.component';
@@ -28,11 +27,9 @@ const routes: Routes = [
   children:[
      {path: '',component: HomeComponent },
   {path: 'usuarios',component: UsuarioCrudComponent},
-  //{path: 'usuarios/create',component: UsuarioCreateComponent},
   {path: 'category', component: CategoryCrudComponent},
   {path: 'category/create',component: CategoryCreateComponent},
   {path: 'category/read',component: CategoryReadComponent},
-  {path: 'category/delete',component: CategoryDeleteComponent},
   {path: 'article',component: ArticleCrudComponent},
   {path: 'article/create',component: ArticleCreateComponent},
   {path: 'article/read', component: ArticleReadComponent},
