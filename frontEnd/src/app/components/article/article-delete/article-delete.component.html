@@ -6,8 +6,13 @@
       <input matInput placeholder="titulo do Artigo" [value]="articles.title" name="article" disable/>
     </mat-form-field>
     
-    <mat-form-field>
-          <input matInput  [value]="categories" name="category" disable/>
+    <mat-form-field appearance="fill">
+      <mat-label>Categoria</mat-label>
+      <mat-select [(ngModel)]="articles.categoryId" name="category">
+        <mat-option *ngFor="let category of categories" [value]="category.id" required>
+          {{category.title}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field>

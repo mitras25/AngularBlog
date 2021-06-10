@@ -46,10 +46,6 @@ export class ArticleUpdateComponent implements OnInit {
   })
 
   this.categoryService.read().subscribe((categories) => {
-    // if (categories.id == ) {
-    //   return categories.title;
-    // }
-    // return 0;
     this.categories = categories;
   });
 }

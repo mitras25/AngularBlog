@@ -43,12 +43,11 @@ export class ArticleDeleteComponent implements OnInit {
   const id = this.route.snapshot.paramMap.get('id')
   this.articleServer.readById(id).subscribe(article =>{
     this.articles = article
-    const idCat = article.categoryId 
-
-  this.categoryService.readById(idCat).subscribe(categories =>{
-    this.categories = categories
+    const idCat = article.categoryId  
   })
-  })
+  this.categoryService.read().subscribe((categories) => {
+    this.categories = categories;
+  });
 }
 
 
