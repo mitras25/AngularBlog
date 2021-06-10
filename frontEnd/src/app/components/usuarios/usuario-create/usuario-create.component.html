@@ -10,7 +10,7 @@
       <input type="email" matInput placeholder="Email" [(ngModel)]="usuario.email" name="email"/>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Senha" [(ngModel)]="usuario.password" name="senha"/>
+      <input type="password" matInput placeholder="Senha" [(ngModel)]="usuario.password" name="senha"/>
     </mat-form-field>
   </form>
   <button mat-raised-button (click)="createUser()" color="primary">

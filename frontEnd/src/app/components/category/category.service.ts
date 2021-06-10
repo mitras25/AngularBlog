@@ -1,3 +1,4 @@
+import { Articles } from './../article/article.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -34,6 +35,12 @@ export class CategoryService {
   //lendo
   readById(id: any): Observable<Category[]>{
     return this.http.get<Category[]>(`${this.baseUrl}/buscar/${id}`)
+  }
+
+  //lendo
+  readById2(article: Articles): Observable<Category[]>{
+    console.log(article)
+    return this.http.get<Category[]>(`${this.baseUrl}/buscar/${article.categoryId}`)
   }
 
   

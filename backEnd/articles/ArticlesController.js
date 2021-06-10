@@ -1,6 +1,6 @@
 const express = require('express')
 const { default: slugify } = require('slugify')
-const Article = require('./Article')
+const Article = require('./ArticleModel')
 const router = express.Router()
 const Category = require('../categories/Category')
 const User = require('../users/User')
@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
     const existe = await Article.findAll({
       //ordenando pelo mais recente
       order: [['id', 'DESC']]
-    });
+    }, { include: {} });
     res.json(existe);
   } catch (erro) {
     next(erro);
@@ -21,8 +21,8 @@ router.get('/', async (req, res, next) => {
 
 // listando todos os artigos
 router.get('/articleAutor/:id', async (req, res, next) => {
-  const userId = req.params.id
   try {
+    const userId = req.params.id
     const existe = await Article.findAll({ where: { userId: userId } });
     res.json(existe);
   } catch (erro) {
@@ -65,20 +65,20 @@ router.post("/create/:id", async (req, res, next) => {
 })
 
 router.delete('/delete/:id', async (req, res, next) => {
-  const id = req.params.id
-  if (id != undefined) {
-    if (!isNaN(id)) {
-      try {
+  try {
+    const id = req.params.id
+    if (id != undefined) {
+      if (!isNaN(id)) {
         const deletar = await Article.destroy({ where: { id: id } })
         res.json("deletado")
-      } catch (erro) {
-        next(erro)
+      } else { //se não for número
+        res.send(erro)
       }
-    } else { //se não for número
+    } else {// se for nulo ou indefinido
       res.send(erro)
     }
-  } else {// se for nulo ou indefinido
-    res.send(erro)
+  } catch (erro) {
+    next(erro)
   }
 })
 
@@ -89,7 +89,6 @@ router.put('/update/:id', (req, res, next) => {
   const body = req.body.body
   const category = req.body.categoryId
   const userId = req.body.userId
-  console.log(req.body)
   try {
     const article = Article.update({
       title: title,
@@ -105,13 +104,5 @@ router.put('/update/:id', (req, res, next) => {
     next(erro)
   }
 })
-
-
-
-
-
-
-
-
 
 module.exports = router

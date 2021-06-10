@@ -23,7 +23,6 @@ const Article = connection.define('articles', {
 Category.hasMany(Article) // Relacionamento de categoria possui varios artigos
 User.hasMany(Article)// Relacionamento de usuarios possui varios artigos
 
-
 //criando tabela caso nao exista
 Article.sync({force: false})
 

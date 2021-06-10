@@ -30,32 +30,10 @@ function auth(req, res, next) {
     });
   } else {
     //res.status(401);
-    res.json({ err: "Token inválido! auth1" });
+    res.json({ err: "Token inválido!" });
   }
 }
 
-
-// Erros
-function caminhoInvalido(req, res, next) {
-  const erro = new Error(`Caminho não encontrado - ${req.url}`);
-  res.status(404);
-  next(erro);
-}
-
-function mostraErros(erro, req, res, next) {
-  // Caso o cód já tenha sido setado para 200 mas aconteceu um erro, seta para 500
-  // caso contrário continua usando o cód anterior
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
-  res.status(statusCode);
-  res.json({
-    message: erro.message,
-    // Mostra os detalhes do erro apenas em produção
-    stack: process.env.NODE_ENV === "producao" ? ":(" : erro.stack,
-  });
-}
-
 module.exports = {
-  caminhoInvalido,
-  mostraErros,
   auth,
 };
